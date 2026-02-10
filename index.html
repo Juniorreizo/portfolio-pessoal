@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alvandir Junior - Suporte Técnico | Operações | Dev Web</title>
+    <title>Alvandir Junior - Desenvolvedor em Formação | Suporte Técnico | ADS</title>
     <style>
         * {
             margin: 0;
@@ -15,6 +15,7 @@
             --primary: #6366f1;
             --secondary: #8b5cf6;
             --accent: #ec4899;
+            --success: #10b981;
             --dark: #0f172a;
             --light: #f8fafc;
         }
@@ -121,7 +122,7 @@
             width: 100%;
         }
 
-        /* Hero épico */
+        /* Hero épico com foto */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -163,6 +164,182 @@
             z-index: 1;
             text-align: center;
             max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Container da foto com efeitos */
+        .profile-photo-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin-bottom: 2rem;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        /* Círculos orbitando */
+        .orbit-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 2px solid transparent;
+            animation: rotate 15s linear infinite;
+        }
+
+        .orbit-circle:nth-child(1) {
+            width: 280px;
+            height: 280px;
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .orbit-circle:nth-child(2) {
+            width: 310px;
+            height: 310px;
+            border-color: rgba(236, 72, 153, 0.2);
+            animation-duration: 20s;
+            animation-direction: reverse;
+        }
+
+        /* Partículas orbitando */
+        .orbit-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.8);
+        }
+
+        .orbit-particle:nth-child(3) {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: orbitParticle1 15s linear infinite;
+        }
+
+        .orbit-particle:nth-child(4) {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: orbitParticle2 15s linear infinite;
+        }
+
+        .orbit-particle:nth-child(5) {
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            animation: orbitParticle3 20s linear infinite reverse;
+        }
+
+        @keyframes orbitParticle1 {
+            0% { top: 0; left: 50%; transform: translate(-50%, 0); }
+            25% { top: 50%; left: 100%; transform: translate(-100%, -50%); }
+            50% { top: 100%; left: 50%; transform: translate(-50%, -100%); }
+            75% { top: 50%; left: 0; transform: translate(0, -50%); }
+            100% { top: 0; left: 50%; transform: translate(-50%, 0); }
+        }
+
+        @keyframes orbitParticle2 {
+            0% { bottom: 0; left: 50%; }
+            25% { bottom: 50%; left: 0; }
+            50% { bottom: 100%; left: 50%; }
+            75% { bottom: 50%; left: 100%; }
+            100% { bottom: 0; left: 50%; }
+        }
+
+        @keyframes orbitParticle3 {
+            0% { top: 50%; left: 0; }
+            25% { top: 0; left: 50%; }
+            50% { top: 50%; left: 100%; }
+            75% { top: 100%; left: 50%; }
+            100% { top: 50%; left: 0; }
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Foto do perfil */
+        .profile-photo {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid transparent;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            padding: 5px;
+            animation: photoFloat 3s ease-in-out infinite, photoGlow 2s ease-in-out infinite;
+            box-shadow: 
+                0 0 60px rgba(99, 102, 241, 0.4),
+                0 0 100px rgba(236, 72, 153, 0.2),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 80px rgba(99, 102, 241, 0.6),
+                0 0 120px rgba(236, 72, 153, 0.3),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        @keyframes photoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes photoGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 60px rgba(99, 102, 241, 0.4),
+                    0 0 100px rgba(236, 72, 153, 0.2),
+                    inset 0 0 20px rgba(255, 255, 255, 0.1);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 80px rgba(99, 102, 241, 0.6),
+                    0 0 120px rgba(236, 72, 153, 0.4),
+                    inset 0 0 30px rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        /* Badge de status */
+        .status-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            border: 4px solid var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            animation: statusPulse 2s ease-in-out infinite;
+            z-index: 20;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         .hero h1 {
@@ -173,7 +350,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: slideDown 0.8s ease-out;
+            animation: slideDown 0.8s ease-out 0.2s both;
         }
 
         @keyframes slideDown {
@@ -186,7 +363,7 @@
             color: var(--primary);
             font-weight: 600;
             margin-bottom: 1rem;
-            animation: slideDown 0.8s ease-out 0.2s both;
+            animation: slideDown 0.8s ease-out 0.4s both;
         }
 
         .hero .description {
@@ -194,7 +371,33 @@
             color: rgba(255, 255, 255, 0.7);
             line-height: 1.8;
             margin-bottom: 2rem;
-            animation: slideDown 0.8s ease-out 0.4s both;
+            animation: slideDown 0.8s ease-out 0.6s both;
+        }
+
+        .badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            animation: slideDown 0.8s ease-out 0.7s both;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.5);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .badge:hover {
+            background: rgba(99, 102, 241, 0.3);
+            transform: translateY(-3px);
         }
 
         .availability {
@@ -206,7 +409,7 @@
             padding: 0.75rem 1.5rem;
             border-radius: 50px;
             margin-bottom: 2rem;
-            animation: slideDown 0.8s ease-out 0.6s both;
+            animation: slideDown 0.8s ease-out 0.8s both;
         }
 
         .availability::before {
@@ -228,7 +431,7 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: slideDown 0.8s ease-out 0.8s both;
+            animation: slideDown 0.8s ease-out 1s both;
         }
 
         .btn {
@@ -401,6 +604,94 @@
             transform: translateX(5px);
         }
 
+        /* Experiência Profissional */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+        }
+
+        .experience-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.3);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title {
+            flex: 1;
+        }
+
+        .experience-title h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .period {
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .experience-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .experience-description ul {
+            margin-top: 1rem;
+            list-style: none;
+        }
+
+        .experience-description li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .experience-description li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
         /* Projetos com cards 3D */
         .projects-grid {
             display: grid;
@@ -571,6 +862,98 @@
             line-height: 1.8;
         }
 
+        /* Formação */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '🎓';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            opacity: 0.1;
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.3);
+        }
+
+        .education-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .institution {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .degree {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .education-period {
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        /* Certificações */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .certification-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .certification-card::before {
+            content: '🏆';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            background: var(--dark);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.4);
+        }
+
         /* Contato com hover effects */
         .contact-grid {
             display: grid;
@@ -650,6 +1033,33 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            background: rgba(99, 102, 241, 0.4);
+            transform: translateY(-5px);
+        }
+
         /* Responsivo */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
@@ -658,7 +1068,12 @@
             .timeline::before { left: 20px; }
             .timeline-item { width: calc(100% - 60px); margin-left: 40px !important; }
             .timeline-item::before { left: -40px !important; }
-            .skills-grid, .projects-grid, .contact-grid { grid-template-columns: 1fr; }
+            .skills-grid, .projects-grid, .contact-grid, .education-grid, .certifications-grid { grid-template-columns: 1fr; }
+            .experience-header { flex-direction: column; }
+            .profile-photo-container { width: 200px; height: 200px; }
+            .profile-photo { width: 200px; height: 200px; }
+            .orbit-circle:nth-child(1) { width: 230px; height: 230px; }
+            .orbit-circle:nth-child(2) { width: 260px; height: 260px; }
         }
 
         /* Scroll reveal */
@@ -683,9 +1098,10 @@
             <div class="logo">Alvandir Junior</div>
             <ul class="nav-links">
                 <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#experiencia">Experiência</a></li>
                 <li><a href="#competencias">Competências</a></li>
                 <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#evolucao">Evolução</a></li>
+                <li><a href="#formacao">Formação</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
@@ -695,13 +1111,40 @@
         <div class="hero-gradient"></div>
         <div class="hero-gradient"></div>
         <div class="hero-content">
+            <!-- Container da foto com efeitos -->
+            <div class="profile-photo-container">
+                <!-- Círculos orbitando -->
+                <div class="orbit-circle"></div>
+                <div class="orbit-circle"></div>
+                
+                <!-- Partículas orbitando -->
+                <div class="orbit-particle"></div>
+                <div class="orbit-particle"></div>
+                <div class="orbit-particle"></div>
+                
+                <!-- Foto do perfil -->
+                <div class="profile-photo">
+                    <img src="https://media.licdn.com/dms/image/v2/D4E03AQG378FXgLNr3g/profile-displayphoto-scale_200_200/B4EZwrCf0PKUAY-/0/1770248607903?e=1772064000&v=beta&t=nsAjzolJcGSGtoISaz-ooXGiWumI939ePK6R2PRXwAs" alt="Alvandir Francisco Júnior">
+                    <!-- Badge de status -->
+                    <div class="status-badge">💼</div>
+                </div>
+            </div>
+
             <h1>Alvandir Francisco Júnior</h1>
-            <p class="subtitle">Suporte Técnico | Operações | Desenvolvimento Web</p>
-            <p class="description">Profissional organizado, comunicativo e com forte capacidade de aprendizado. Experiência em atendimento, suporte básico, organização de processos, desenvolvimento de sites e melhoria de fluxos operacionais.</p>
-            <div class="availability">Disponível para novas oportunidades</div>
+            <p class="subtitle">Desenvolvedor em Formação | Java, JavaScript | Suporte Técnico & Infraestrutura</p>
+            <p class="description">Graduando em Análise e Desenvolvimento de Sistemas, com experiência em gestão operacional, suporte técnico e desenvolvimento web. Participante ativo do programa Start by Capgemini com foco em Java, Salesforce e Cloud Computing (AWS).</p>
+            
+            <div class="badges">
+                <div class="badge">🎓 Graduando ADS - UniFBV Wyden</div>
+                <div class="badge">☁️ AWS re/Start Graduate</div>
+                <div class="badge">💼 Start by Capgemini</div>
+            </div>
+
+            <div class="availability">Disponível para Estágio e Oportunidades em TI</div>
+            
             <div class="cta-buttons">
                 <a href="#contato" class="btn btn-primary">Entre em Contato</a>
-                <a href="#projetos" class="btn btn-secondary">Ver Projetos</a>
+                <a href="#experiencia" class="btn btn-secondary">Ver Experiência</a>
             </div>
         </div>
     </section>
@@ -709,17 +1152,103 @@
     <section id="sobre">
         <div class="container">
             <h2 class="section-title reveal">Sobre Mim</h2>
-            <p class="section-subtitle reveal">Perfil profissional e áreas de atuação</p>
+            <p class="section-subtitle reveal">Perfil profissional e objetivos de carreira</p>
             <div class="glass-card reveal" style="max-width: 800px; margin: 0 auto;">
                 <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem;">
-                    Sou um profissional organizado, comunicativo e com forte capacidade de aprendizado. Tenho experiência prática em atendimento, suporte básico, organização de arquivos, desenvolvimento de sites e melhoria de processos simples.
+                    Apaixonado por resolver problemas através do código e infraestrutura. Com experiência prática em suporte Linux e agora focado no ecossistema <strong style="color: var(--primary);">Java/Spring</strong> e <strong style="color: var(--primary);">JavaScript</strong>. 
                 </p>
                 <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem;">
-                    Meu foco está em atuar em <strong style="color: var(--primary);">operações, suporte técnico, desenvolvimento web ou funções administrativas</strong> que exigem responsabilidade, resolução de problemas e clareza na comunicação.
+                    Recentemente certificado pelo <strong style="color: var(--success);">AWS re/Start</strong>, aplico conceitos de Cloud (S3, EC2, Lambda) para criar soluções eficientes. Atualmente participando do programa <strong style="color: var(--primary);">Start by Capgemini</strong>, desenvolvendo competências em Salesforce e desenvolvimento Java.
                 </p>
                 <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.8);">
-                    Estou sempre evoluindo minhas competências em tecnologia, produtividade, sistemas e ferramentas digitais.
+                    <strong style="color: var(--accent);">Objetivo:</strong> Estou em busca de oportunidades como <strong>Estagiário de TI</strong>, <strong>Assistente de TI</strong> ou <strong>Desenvolvedor Junior</strong>, onde possa aplicar meus conhecimentos técnicos, contribuir para projetos significativos e continuar evoluindo profissionalmente.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiencia">
+        <div class="container">
+            <h2 class="section-title reveal">Experiência Profissional</h2>
+            <p class="section-subtitle reveal">Trajetória profissional e responsabilidades</p>
+            
+            <div class="experience-grid">
+                <div class="experience-card reveal">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Gestão Operacional e Atendimento</h3>
+                            <p class="company">Madame Pitaya</p>
+                            <p style="color: rgba(255,255,255,0.6); margin-top: 0.5rem;">Recife, PE · Presencial · Tempo Integral</p>
+                        </div>
+                        <div class="period">Jan 2023 - Dez 2024 · 2 anos</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Identificação de falhas em processos internos e implementação de melhorias operacionais</li>
+                            <li>Gestão de fluxo de dados (estoque e pedidos) utilizando sistemas digitais</li>
+                            <li>Atendimento digital ao cliente via WhatsApp e redes sociais</li>
+                            <li>Organização e padronização de documentos e processos administrativos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card reveal">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Monitor de Informática</h3>
+                            <p class="company">SENAI - Serviço Nacional de Aprendizagem Industrial</p>
+                            <p style="color: rgba(255,255,255,0.6); margin-top: 0.5rem;">Recife, PE · Presencial · Estágio</p>
+                        </div>
+                        <div class="period">Jun 2024 · 1 mês</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Suporte técnico especializado em estações de trabalho Linux</li>
+                            <li>Administração básica de redes em ambiente Linux</li>
+                            <li>Gestão de documentação técnica e manuais de procedimentos</li>
+                            <li>Organização de ativos de hardware/software do laboratório</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card reveal">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Balconista</h3>
+                            <p class="company">Casa dos Doces</p>
+                            <p style="color: rgba(255,255,255,0.6); margin-top: 0.5rem;">Presencial · Tempo Integral</p>
+                        </div>
+                        <div class="period">Jan 2022 - Ago 2022 · 8 meses</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Atendimento aos clientes (presencial e canais digitais)</li>
+                            <li>Operação de caixa e gestão de transações</li>
+                            <li>Organização e limpeza do ambiente</li>
+                            <li>Multitarefa em ambiente de alta demanda</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card reveal">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Assistente Geral</h3>
+                            <p class="company">Prefeitura da Cidade do Recife</p>
+                            <p style="color: rgba(255,255,255,0.6); margin-top: 0.5rem;">Recife, PE · Presencial · Estágio</p>
+                        </div>
+                        <div class="period">Jan 2019 - Jan 2020 · 1 ano 1 mês</div>
+                    </div>
+                    <div class="experience-description">
+                        <p>Escola Municipal Rozemar de Macedo Lima</p>
+                        <ul>
+                            <li>Apoio no recebimento e acolhimento de estudantes com necessidades especiais</li>
+                            <li>Auxílio durante permanência em sala de aula</li>
+                            <li>Assistência na higienização e recreação dos alunos</li>
+                            <li>Contribuição para ambiente inclusivo e acessível</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -731,72 +1260,82 @@
             
             <div class="skills-grid">
                 <div class="skill-card reveal">
-                    <h3>💼 Organização e Processos</h3>
+                    <h3>☕ Desenvolvimento Java</h3>
                     <ul>
-                        <li>Organização de fluxos e arquivos</li>
-                        <li>Padronização de documentos</li>
-                        <li>Melhoria de processos operacionais</li>
-                        <li>Estruturação de rotinas administrativas</li>
-                    </ul>
-                </div>
-
-                <div class="skill-card reveal">
-                    <h3>🔧 Suporte Técnico</h3>
-                    <ul>
-                        <li>Suporte básico a usuários</li>
-                        <li>Diagnóstico de problemas simples</li>
-                        <li>Orientação clara e objetiva</li>
-                        <li>Resolução de demandas técnicas</li>
-                    </ul>
-                </div>
-
-                <div class="skill-card reveal">
-                    <h3>📊 Ferramentas Digitais</h3>
-                    <ul>
-                        <li>Excel / Google Sheets</li>
-                        <li>Planilhas e controles</li>
-                        <li>Pacote Office / Google Workspace</li>
-                        <li>Noções de sistemas e CRMs</li>
-                    </ul>
-                </div>
-
-                <div class="skill-card reveal">
-                    <h3>💬 Comunicação</h3>
-                    <ul>
-                        <li>Atendimento ao usuário</li>
-                        <li>Comunicação clara e empática</li>
-                        <li>Documentação de processos</li>
-                        <li>Trabalho em equipe</li>
-                    </ul>
-                </div>
-
-                <div class="skill-card reveal">
-                    <h3>🧠 Soft Skills</h3>
-                    <ul>
-                        <li>Aprendizado rápido</li>
-                        <li>Resolução de problemas</li>
-                        <li>Proatividade</li>
-                        <li>Adaptabilidade</li>
-                    </ul>
-                </div>
-
-                <div class="skill-card reveal">
-                    <h3>☁️ Cloud & Tecnologia</h3>
-                    <ul>
-                        <li>Noções de AWS (S3, deploy básico)</li>
-                        <li>Hospedagem de sites</li>
-                        <li>Fundamentos de TI</li>
-                        <li>HTML/CSS básico</li>
+                        <li>Java Core e Orientação a Objetos</li>
+                        <li>Spring Framework & Spring Boot</li>
+                        <li>APIs RESTful</li>
+                        <li>Fundamentos de Backend</li>
                     </ul>
                 </div>
 
                 <div class="skill-card reveal">
                     <h3>🌐 Desenvolvimento Web</h3>
                     <ul>
-                        <li>Criação de sites responsivos</li>
                         <li>HTML5, CSS3 e JavaScript</li>
-                        <li>Design de interfaces modernas</li>
-                        <li>Deploy e publicação de sites</li>
+                        <li>Design responsivo e mobile-first</li>
+                        <li>Criação de interfaces modernas</li>
+                        <li>Deploy e hospedagem de sites</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card reveal">
+                    <h3>☁️ Cloud Computing (AWS)</h3>
+                    <ul>
+                        <li>Amazon S3 (hospedagem estática)</li>
+                        <li>Amazon EC2 (servidores virtuais)</li>
+                        <li>AWS Lambda (serverless)</li>
+                        <li>Fundamentos de cloud infrastructure</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card reveal">
+                    <h3>🔧 Suporte Técnico & Linux</h3>
+                    <ul>
+                        <li>Suporte Linux (Ubuntu, Debian)</li>
+                        <li>Administração básica de redes</li>
+                        <li>Diagnóstico e resolução de problemas</li>
+                        <li>Documentação técnica</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card reveal">
+                    <h3>💼 Salesforce</h3>
+                    <ul>
+                        <li>Trailhead (em progresso)</li>
+                        <li>Fundamentos da plataforma</li>
+                        <li>Segurança de dados</li>
+                        <li>Configuração e customização</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card reveal">
+                    <h3>📊 Ferramentas & Processos</h3>
+                    <ul>
+                        <li>Git & GitHub (controle de versão)</li>
+                        <li>Excel / Google Sheets</li>
+                        <li>Organização de processos operacionais</li>
+                        <li>Documentação e padronização</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card reveal">
+                    <h3>💬 Soft Skills</h3>
+                    <ul>
+                        <li>Aprendizado rápido e autodidata</li>
+                        <li>Resolução de problemas</li>
+                        <li>Comunicação clara e objetiva</li>
+                        <li>Trabalho em equipe</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card reveal">
+                    <h3>🏗️ Outras Tecnologias</h3>
+                    <ul>
+                        <li>Banco de dados (fundamentos)</li>
+                        <li>IoT (ESP8266, automação)</li>
+                        <li>Python (básico)</li>
+                        <li>Marketing digital</li>
                     </ul>
                 </div>
             </div>
@@ -811,12 +1350,77 @@
             <div class="projects-grid">
                 <div class="project-card reveal">
                     <div class="project-header">
-                        <h3>📁 Organização de Arquivos Digitais</h3>
+                        <h3>🌐 Portfólio Profissional Completo</h3>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Objetivo:</strong> Hub centralizado de projetos desenvolvidos durante graduação em ADS.</p>
+                        <p><strong>Tecnologias:</strong> HTML5, CSS3, JavaScript, React. Arquitetura organizada com Git/GitHub, foco em cloud computing e integração com APIs.</p>
+                        <div class="result-badge">✓ Deploy realizado na AWS</div>
+                        <div class="project-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Git</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-header">
+                        <h3>🤖 Chatbot com WhatsApp (Em Desenvolvimento)</h3>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Projeto:</strong> Desenvolvimento de chatbot integrado ao WhatsApp.</p>
+                        <p><strong>Fase Atual:</strong> Testes via Prompt de Comando concluídos. Próxima etapa: integração completa com API do WhatsApp.</p>
+                        <div class="result-badge">✓ Fase 1 concluída</div>
+                        <div class="project-tags">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">API</span>
+                            <span class="tag">WhatsApp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-header">
+                        <h3>☁️ Deploy de Sites na AWS S3</h3>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Objetivo:</strong> Hospedar sites estáticos de forma profissional e escalável.</p>
+                        <p><strong>Execução:</strong> Configuração de bucket S3, permissões, upload de arquivos, ativação de hospedagem estática e distribuição via CloudFront.</p>
+                        <div class="result-badge">✓ Múltiplos sites em produção</div>
+                        <div class="project-tags">
+                            <span class="tag">AWS S3</span>
+                            <span class="tag">Cloud</span>
+                            <span class="tag">Deploy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-header">
+                        <h3>🏠 Casa Inteligente com IoT</h3>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Projeto:</strong> Sistema de automação residencial com ESP8266.</p>
+                        <p><strong>Funcionalidades:</strong> Controle remoto via Wi-Fi, acionamento de luzes, alertas personalizados e monitoramento de ambiente.</p>
+                        <div class="result-badge">✓ Protótipo funcional</div>
+                        <div class="project-tags">
+                            <span class="tag">IoT</span>
+                            <span class="tag">ESP8266</span>
+                            <span class="tag">Automação</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-header">
+                        <h3>📁 Sistema de Organização Digital</h3>
                     </div>
                     <div class="project-body">
                         <p><strong>Problema:</strong> Documentos desorganizados causando perda de tempo e retrabalho.</p>
-                        <p><strong>Solução:</strong> Estruturei sistema de pastas padronizado, renomeação lógica de arquivos e documentação do processo.</p>
-                        <div class="result-badge">✓ Redução de 50% no tempo de busca</div>
+                        <p><strong>Solução:</strong> Estrutura de pastas padronizada, nomenclatura lógica de arquivos e documentação completa do processo.</p>
+                        <div class="result-badge">✓ 50% de redução no tempo de busca</div>
                         <div class="project-tags">
                             <span class="tag">Organização</span>
                             <span class="tag">Processos</span>
@@ -827,81 +1431,93 @@
 
                 <div class="project-card reveal">
                     <div class="project-header">
-                        <h3>🛠️ Suporte Técnico a Usuários</h3>
-                    </div>
-                    <div class="project-body">
-                        <p><strong>Problema:</strong> Usuários com dificuldades em softwares, acesso e configurações básicas.</p>
-                        <p><strong>Solução:</strong> Diagnóstico de problemas, orientação clara passo a passo, e documentação de soluções frequentes.</p>
-                        <div class="result-badge">✓ 15+ atendimentos realizados</div>
-                        <div class="project-tags">
-                            <span class="tag">Suporte</span>
-                            <span class="tag">Comunicação</span>
-                            <span class="tag">Resolução</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal">
-                    <div class="project-header">
-                        <h3>📊 Planilha de Controle Operacional</h3>
+                        <h3>📊 Planilhas de Controle Operacional</h3>
                     </div>
                     <div class="project-body">
                         <p><strong>Problema:</strong> Ausência de controle sobre tarefas, prazos e registros operacionais.</p>
-                        <p><strong>Solução:</strong> Criei planilha funcional com fórmulas, validação de dados e organização visual clara.</p>
-                        <div class="result-badge">✓ 3 planilhas criadas e implementadas</div>
+                        <p><strong>Solução:</strong> Criação de planilhas funcionais com fórmulas, validação de dados e organização visual clara para gestão eficiente.</p>
+                        <div class="result-badge">✓ 3 planilhas implementadas</div>
                         <div class="project-tags">
                             <span class="tag">Excel</span>
                             <span class="tag">Controle</span>
-                            <span class="tag">Lógica</span>
+                            <span class="tag">Gestão</span>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="project-card reveal">
-                    <div class="project-header">
-                        <h3>☁️ Deploy de Sites na Nuvem (AWS S3)</h3>
-                    </div>
-                    <div class="project-body">
-                        <p><strong>Objetivo:</strong> Hospedar sites estáticos de forma profissional e acessível.</p>
-                        <p><strong>Execução:</strong> Configuração de bucket S3, permissões, upload de arquivos e ativação de hospedagem estática.</p>
-                        <div class="result-badge">✓ Sites funcionais na nuvem</div>
-                        <div class="project-tags">
-                            <span class="tag">AWS</span>
-                            <span class="tag">Cloud</span>
-                            <span class="tag">Deploy</span>
-                        </div>
+    <section id="formacao">
+        <div class="container">
+            <h2 class="section-title reveal">Formação Acadêmica</h2>
+            <p class="section-subtitle reveal">Educação formal e técnica</p>
+
+            <div class="education-grid">
+                <div class="education-card reveal">
+                    <h3>Bacharelado em Análise e Desenvolvimento de Sistemas</h3>
+                    <p class="institution">UniFBV Wyden</p>
+                    <p class="degree">Tecnólogo - ADS</p>
+                    <div class="education-period">Jul 2024 - Mar 2026 (Em andamento)</div>
+                    <p style="color: rgba(255,255,255,0.7); margin-top: 1rem; line-height: 1.6;">
+                        Formação focada em desenvolvimento de software, análise de sistemas, banco de dados, arquitetura de aplicações e gestão de projetos de TI.
+                    </p>
+                </div>
+
+                <div class="education-card reveal">
+                    <h3>Técnico em Informática</h3>
+                    <p class="institution">SENAI - Serviço Nacional de Aprendizagem Industrial</p>
+                    <p class="degree">Curso Técnico</p>
+                    <div class="education-period">Jan 2024 - Jun 2025 (Em andamento)</div>
+                    <p style="color: rgba(255,255,255,0.7); margin-top: 1rem; line-height: 1.6;">
+                        Formação técnica em manutenção de computadores, redes, suporte técnico, desenvolvimento web e fundamentos de programação. Experiência prática em ambientes Linux.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="section-title reveal" style="margin-top: 4rem;">Certificações e Programas</h2>
+            <p class="section-subtitle reveal">Certificações técnicas e programas de formação</p>
+
+            <div class="certifications-grid">
+                <div class="certification-card reveal">
+                    <h3 style="margin-top: 1rem;">AWS re/Start Graduate</h3>
+                    <p class="institution">Amazon Web Services (AWS)</p>
+                    <div class="education-period" style="margin-top: 1rem;">Fev 2024 - Jun 2024</div>
+                    <p style="color: rgba(255,255,255,0.7); margin-top: 1rem; line-height: 1.6;">
+                        Programa intensivo de 335 horas cobrindo Cloud Computing, AWS Services (S3, EC2, Lambda), Linux, Redes, Python e Bancos de Dados. Prática hands-on com deploy de aplicações.
+                    </p>
+                    <div class="project-tags" style="margin-top: 1rem; justify-content: center;">
+                        <span class="tag">AWS</span>
+                        <span class="tag">Cloud</span>
+                        <span class="tag">Linux</span>
+                        <span class="tag">Python</span>
                     </div>
                 </div>
 
-                <div class="project-card reveal">
-                    <div class="project-header">
-                        <h3>🏠 Protótipo de Casa Inteligente (IoT)</h3>
-                    </div>
-                    <div class="project-body">
-                        <p><strong>Projeto:</strong> Sistema de automação residencial com ESP8266.</p>
-                        <p><strong>Funcionalidades:</strong> Controle remoto via Wi-Fi, ligar/desligar luzes, configurar alertas personalizados.</p>
-                        <div class="result-badge">✓ Projeto em andamento</div>
-                        <div class="project-tags">
-                            <span class="tag">IoT</span>
-                            <span class="tag">Automação</span>
-                            <span class="tag">ESP8266</span>
-                        </div>
+                <div class="certification-card reveal">
+                    <h3 style="margin-top: 1rem;">Start by Capgemini</h3>
+                    <p class="institution">Capgemini</p>
+                    <div class="education-period" style="margin-top: 1rem;">2025 (Em andamento)</div>
+                    <p style="color: rgba(255,255,255,0.7); margin-top: 1rem; line-height: 1.6;">
+                        Programa de formação técnica em desenvolvimento. Trilhas concluídas: Lógica de Programação, Java (desenvolvimento web, APIs). Trilha atual: Salesforce (CRM, configuração, segurança de dados).
+                    </p>
+                    <div class="project-tags" style="margin-top: 1rem; justify-content: center;">
+                        <span class="tag">Java</span>
+                        <span class="tag">Salesforce</span>
+                        <span class="tag">APIs</span>
                     </div>
                 </div>
 
-                <div class="project-card reveal">
-                    <div class="project-header">
-                        <h3>🌐 Desenvolvimento de Sites Profissionais</h3>
-                    </div>
-                    <div class="project-body">
-                        <p><strong>Objetivo:</strong> Criar sites modernos, responsivos e com design profissional.</p>
-                        <p><strong>Tecnologias:</strong> HTML5, CSS3, JavaScript. Design responsivo para mobile e desktop com animações e efeitos interativos.</p>
-                        <div class="result-badge">✓ Múltiplos sites desenvolvidos</div>
-                        <div class="project-tags">
-                            <span class="tag">HTML/CSS</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Design</span>
-                        </div>
+                <div class="certification-card reveal">
+                    <h3 style="margin-top: 1rem;">Salesforce para Iniciantes</h3>
+                    <p class="institution">Udemy</p>
+                    <div class="education-period" style="margin-top: 1rem;">2025 (Concluído)</div>
+                    <p style="color: rgba(255,255,255,0.7); margin-top: 1rem; line-height: 1.6;">
+                        Curso introdutório sobre a plataforma Salesforce, cobrindo fundamentos, configuração básica e principais recursos da ferramenta de CRM mais utilizada no mercado.
+                    </p>
+                    <div class="project-tags" style="margin-top: 1rem; justify-content: center;">
+                        <span class="tag">Salesforce</span>
+                        <span class="tag">CRM</span>
                     </div>
                 </div>
             </div>
@@ -915,34 +1531,66 @@
 
             <div class="timeline">
                 <div class="timeline-item reveal">
-                    <div class="timeline-date">2024 - 2025</div>
-                    <div class="timeline-title">Formação de Competências Operacionais</div>
+                    <div class="timeline-date">2019 - 2020</div>
+                    <div class="timeline-title">Primeiras Experiências Profissionais</div>
                     <div class="timeline-description">
-                        Desenvolvimento prático em organização, atendimento, suporte básico, criação de planilhas e melhoria de processos. Experiência real com tarefas administrativas e rotinas operacionais.
+                        Início da trajetória profissional como Assistente Geral na Prefeitura do Recife, desenvolvendo habilidades de empatia, organização e trabalho com público especial. Primeira experiência com responsabilidades e rotinas estruturadas.
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-date">2022</div>
+                    <div class="timeline-title">Desenvolvimento de Competências Comerciais</div>
+                    <div class="timeline-description">
+                        Atuação como Balconista na Casa dos Doces, desenvolvendo habilidades de atendimento ao cliente, gestão de caixa e trabalho sob pressão. Experiência com multitarefa e ambiente de alta demanda.
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <div class="timeline-title">Transição para Gestão e Operações</div>
+                    <div class="timeline-description">
+                        Gestão Operacional na Madame Pitaya por 2 anos. Identificação e correção de falhas em processos, gestão de dados (estoque e pedidos) e atendimento digital. Desenvolvimento de visão analítica e foco em melhoria contínua.
                     </div>
                 </div>
 
                 <div class="timeline-item reveal">
                     <div class="timeline-date">2024 (Fev - Jun)</div>
-                    <div class="timeline-title">Preparatório AWS Cloud Practitioner</div>
+                    <div class="timeline-title">Certificação AWS re/Start</div>
                     <div class="timeline-description">
-                        Curso de 335 horas focado em fundamentos de Cloud Computing, AWS, Linux, redes, Python e bancos de dados. Prática com deploy de sites em S3 e conceitos de infraestrutura.
+                        Programa intensivo de 335 horas em Cloud Computing. Prática com AWS (S3, EC2, Lambda), Linux, Python e fundamentos de infraestrutura. Deploy real de sites em S3. Ponto de virada para a área de tecnologia.
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-date">2024 (Jun)</div>
+                    <div class="timeline-title">Monitor de Informática - SENAI</div>
+                    <div class="timeline-description">
+                        Experiência prática em suporte técnico Linux, administração de redes, gestão de documentação técnica e organização de ativos. Consolidação de conhecimentos em ambiente real de TI.
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-date">2024 (Jul - Presente)</div>
+                    <div class="timeline-title">Graduação em ADS + Técnico em Informática</div>
+                    <div class="timeline-description">
+                        Início simultâneo do Bacharelado em Análise e Desenvolvimento de Sistemas (UniFBV Wyden) e Curso Técnico em Informática (SENAI). Foco intenso em desenvolvimento, programação e fundamentos de TI.
                     </div>
                 </div>
 
                 <div class="timeline-item reveal">
                     <div class="timeline-date">2025 (Atual)</div>
-                    <div class="timeline-title">Transição para Tecnologia e Operações</div>
+                    <div class="timeline-title">Start by Capgemini & Especialização</div>
                     <div class="timeline-description">
-                        Aprofundamento em suporte técnico, ferramentas digitais e sistemas. Desenvolvimento de projetos práticos incluindo automação (IoT), organização de processos e hospedagem cloud.
+                        Participação ativa no programa Start by Capgemini. Trilhas concluídas: Lógica e Java. Trilha atual: Salesforce (Trailhead, certificações). Estudos de Salesforce, desenvolvimento Java/Spring, projetos web e automação IoT. Busca ativa por primeira oportunidade profissional em TI.
                     </div>
                 </div>
 
                 <div class="timeline-item reveal">
                     <div class="timeline-date">2025 - 2026 (Projetado)</div>
-                    <div class="timeline-title">Consolidação Profissional</div>
+                    <div class="timeline-title">Primeiro Emprego em TI</div>
                     <div class="timeline-description">
-                        Atuação profissional em suporte técnico, operações ou administrativo. Certificações complementares em TI, Excel avançado e atendimento. Crescimento contínuo em ambientes estruturados.
+                        Objetivo: ingressar como Estagiário de TI, Assistente de TI ou Desenvolvedor Junior. Aplicar conhecimentos em Java, Salesforce, AWS e desenvolvimento web em projetos reais. Crescimento contínuo através de certificações e experiência prática.
                     </div>
                 </div>
             </div>
@@ -952,7 +1600,7 @@
     <section id="contato">
         <div class="container">
             <h2 class="section-title reveal">Vamos Conversar?</h2>
-            <p class="section-subtitle reveal">Entre em contato para oportunidades profissionais</p>
+            <p class="section-subtitle reveal">Disponível para oportunidades de estágio e emprego em TI</p>
 
             <div class="contact-grid">
                 <div class="contact-card reveal">
@@ -980,7 +1628,7 @@
                     <div class="contact-icon">💻</div>
                     <h3>GitHub</h3>
                     <a href="https://github.com/Juniorreizo" target="_blank">github.com/Juniorreizo</a>
-                    <p style="color: rgba(255,255,255,0.6); margin-top: 0.5rem;">Projetos técnicos</p>
+                    <p style="color: rgba(255,255,255,0.6); margin-top: 0.5rem;">Projetos e código</p>
                 </div>
             </div>
         </div>
@@ -988,7 +1636,14 @@
 
     <footer>
         <p>&copy; 2025 Alvandir Francisco Júnior. Todos os direitos reservados.</p>
-        <p style="margin-top: 0.5rem; opacity: 0.6;">Desenvolvido com foco em clareza, profissionalismo e resultados</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">Desenvolvedor em Formação | Java | JavaScript | AWS | Salesforce</p>
+        
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/junior-reizo" target="_blank" title="LinkedIn">💼</a>
+            <a href="https://github.com/Juniorreizo" target="_blank" title="GitHub">💻</a>
+            <a href="https://wa.me/5581991895060" target="_blank" title="WhatsApp">📱</a>
+            <a href="mailto:juniorreizo2000@gmail.com" title="Email">📧</a>
+        </div>
     </footer>
 
     <script>
